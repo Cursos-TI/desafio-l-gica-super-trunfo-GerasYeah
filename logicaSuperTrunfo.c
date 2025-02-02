@@ -3,6 +3,7 @@
 // Desafio Super Trunfo - Países
 
 int main() {
+    
     // Variáveis para armazenar as propriedades das cartas
 
     char codigoA[4], estadoA[3], cidadeA[31], codigoB[4], estadoB[3], cidadeB[31];
@@ -10,8 +11,7 @@ int main() {
     int populacaoA, populacaoB, pontosTuristicosA, pontosTuristicosB;
 
     // Variáveis para armazenar as informações da comparação das cartas
-    
-    char cidadeVencedora[31];
+
     int pontosCartaA, pontosCartaB;
 
     // Cadastro da carta 1
@@ -38,6 +38,7 @@ int main() {
     scanf("%d", &pontosTuristicosA);
 
     // Exibindo as propriedades da carta 1
+
     printf("Informações da carta 1:\n");
     printf("Código: %s\n", codigoA);
     printf("Estado: %s\n", estadoA);
@@ -71,6 +72,7 @@ int main() {
     scanf("%d", &pontosTuristicosB);
 
     // Exibindo as propriedades da carta 2
+
     printf("Informações da carta 2:\n");
     printf("Código: %s\n", codigoB);
     printf("Estado: %s\n", estadoB);
@@ -80,31 +82,33 @@ int main() {
     printf("PIB: %f\n", pibB);
     printf("Área: %d\n\n", populacaoB);
 
-    // Comparação de cartas
+    // Comparação das cartas
+
     if (populacaoA > populacaoB) {
-        printf("Cidade 1 tem maior população.\n");
+        printf("A cidade 1 tem uma população maior.\n");
         pontosCartaA++;
     } else {
-         printf("Cidade 2 tem maior população.\n");
+         printf("A cidade 2 tem uma população maior.\n");
          pontosCartaB++;
     }
 
     if (areaA > areaB) {
-        printf("Cidade 1 tem um território maior.\n");
+        printf("a cidade 1 tem um território maior.\n");
         pontosCartaA++;
     } else {
-         printf("Cidade 2 tem um território maior.\n");
+         printf("A cidade 2 tem um território maior.\n");
          pontosCartaB++;
     }
 
+    // Resultado da comparação
 
-
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
-
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    if (pontosCartaA > pontosCartaB) {
+        printf("A cidade vencedora é: %s, com %d pontos.\n", cidadeA, pontosCartaA);
+    } else if (pontosCartaB > pontosCartaA) {
+        printf("A cidade vencedora é: %s, com %d pontos.\n", cidadeB, pontosCartaB);
+    } else {
+        printf("Houve um empate entre as cidades.\n");
+    }
 
     return 0;
 }
