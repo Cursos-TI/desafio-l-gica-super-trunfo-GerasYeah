@@ -3,7 +3,7 @@
 // Desafio Super Trunfo - Países
 
 int main() {
-    
+
     // Variáveis para armazenar as propriedades das cartas
 
     char codigoA[4], estadoA[3], cidadeA[31], codigoB[4], estadoB[3], cidadeB[31];
@@ -12,7 +12,7 @@ int main() {
 
     // Variáveis para armazenar as informações da comparação das cartas
 
-    int pontosCartaA, pontosCartaB;
+    int pontosCartaA, pontosCartaB, densidadePopulacionalA, densidadePopulacionalB; 
 
     // Cadastro da carta 1
 
@@ -39,7 +39,7 @@ int main() {
 
     // Exibindo as propriedades da carta 1
 
-    printf("Informações da carta 1:\n");
+    printf("\nInformações da carta 1:\n");
     printf("Código: %s\n", codigoA);
     printf("Estado: %s\n", estadoA);
     printf("Cidade: %s\n", cidadeA);
@@ -73,7 +73,7 @@ int main() {
 
     // Exibindo as propriedades da carta 2
 
-    printf("Informações da carta 2:\n");
+    printf("\nInformações da carta 2:\n");
     printf("Código: %s\n", codigoB);
     printf("Estado: %s\n", estadoB);
     printf("Cidade: %s\n", cidadeB);
@@ -83,31 +83,62 @@ int main() {
     printf("Área: %d\n\n", populacaoB);
 
     // Comparação das cartas
-
     if (populacaoA > populacaoB) {
-        printf("A cidade 1 tem uma população maior.\n");
         pontosCartaA++;
+        printf("A cidade 1 tem uma população maior.\n");
+    } else if (populacaoB > populacaoA) {
+        pontosCartaB++;
+        printf("A cidade 2 tem uma população maior.\n");
     } else {
-         printf("A cidade 2 tem uma população maior.\n");
-         pontosCartaB++;
+        printf("As duas cidades têm a mesma quantidade de habitantes.\n");
     }
 
     if (areaA > areaB) {
-        printf("a cidade 1 tem um território maior.\n");
         pontosCartaA++;
+        printf("A cidade 1 tem um território maior.\n");
+    } else if (areaB > areaA) {
+        pontosCartaB++;
+        printf("A cidade 2 tem um território maior.\n");
     } else {
-         printf("A cidade 2 tem um território maior.\n");
-         pontosCartaB++;
+        printf("As duas cidades têm o mesmo tamanho.\n");
+    }
+
+    if (pibA > pibB) {
+        pontosCartaA++;
+        printf("a cidade 1 tem um PIB maior.\n");
+    } else if (pibB > pibA) {
+        pontosCartaB++;
+        printf("A cidade 2 tem um PIB maior.\n");
+    } else {
+        printf("As duas cidades têm o mesmo valor no PIB.\n");
+    }
+    
+    // Cálculo de densidade populacional
+
+    densidadePopulacionalA = populacaoA / areaA;
+    densidadePopulacionalB = populacaoB / areaB;
+    
+    // Comparação de densidade populacional
+    
+    if (densidadePopulacionalA < densidadePopulacionalB) {
+        pontosCartaA++;
+        printf("A cidade 1 tem uma densidade populacional menor.\n");
+        
+    } else if (densidadePopulacionalB < densidadePopulacionalA) {
+        pontosCartaB++;
+        printf("A cidade 2 tem uma densidade populacional menor.\n");
+    } else {
+        printf("As duas cidades têm a mesma densidade populacional.\n");
     }
 
     // Resultado da comparação
 
     if (pontosCartaA > pontosCartaB) {
-        printf("A cidade vencedora é: %s, com %d pontos.\n", cidadeA, pontosCartaA);
+        printf("\nA cidade vencedora é: %s, com %d pontos.\n", cidadeA, pontosCartaA);
     } else if (pontosCartaB > pontosCartaA) {
-        printf("A cidade vencedora é: %s, com %d pontos.\n", cidadeB, pontosCartaB);
+        printf("\nA cidade vencedora é: %s, com %d pontos.\n", cidadeB, pontosCartaB);
     } else {
-        printf("Houve um empate entre as cidades.\n");
+        printf("\nHouve um empate entre as cidades. A pontuação de cada cidade foi: %d.\n", pontosCartaA);
     }
 
     return 0;
