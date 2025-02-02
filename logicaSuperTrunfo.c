@@ -12,7 +12,9 @@ int main() {
 
     // Variáveis para armazenar as informações da comparação das cartas
 
-    int pontosCartaA, pontosCartaB, densidadePopulacionalA, densidadePopulacionalB; 
+    int pontosCartaA, pontosCartaB;
+    int densidadePopulacionalA, densidadePopulacionalB;
+    int pibPerCapitaA, pibPerCapitaB;
 
     // Cadastro da carta 1
 
@@ -46,7 +48,7 @@ int main() {
     printf("População: %d\n", populacaoA);
     printf("Área: %f\n", areaA);
     printf("PIB: %f\n", pibA);
-    printf("Área: %d\n\n", populacaoA);
+    printf("Pontos turísticos: %d\n\n", pontosTuristicosA);
 
     // Cadastro da carta 2
 
@@ -80,7 +82,7 @@ int main() {
     printf("População: %d\n", populacaoB);
     printf("Área: %f\n", areaB);
     printf("PIB: %f\n", pibB);
-    printf("Área: %d\n\n", populacaoB);
+    printf("Pontos turísticos: %d\n\n", pontosTuristicosB);
 
     // Comparação das cartas
     if (populacaoA > populacaoB) {
@@ -113,23 +115,39 @@ int main() {
         printf("As duas cidades têm o mesmo valor no PIB.\n");
     }
     
+    if (pontosTuristicosA > pontosTuristicosB) {
+        pontosCartaA++;
+        printf("a cidade 1 tem mais pontos turísticos.\n");
+    } else if (pontosTuristicosB > pontosTuristicosA) {
+        pontosCartaB++;
+        printf("A cidade 2 tem mais pontos turísticos.\n");
+    } else {
+        printf("As duas cidades têm a mesma quantidade de pontos turísticos.\n");
+    }
+    
+    // Cálculo do PIB per capita
+
+    pibPerCapitaA = pibA / populacaoA;
+    pibPerCapitaB = pibB / populacaoB;
+
     // Cálculo de densidade populacional
 
     densidadePopulacionalA = populacaoA / areaA;
     densidadePopulacionalB = populacaoB / areaB;
+
+    // Comparação do PIB per capita
     
-    // Comparação de densidade populacional
-    
-    if (densidadePopulacionalA < densidadePopulacionalB) {
+    if (pibPerCapitaA > pibPerCapitaB) {
         pontosCartaA++;
-        printf("A cidade 1 tem uma densidade populacional menor.\n");
+        printf("A cidade 1 tem o PIB per capita maior.\n");
         
-    } else if (densidadePopulacionalB < densidadePopulacionalA) {
+    } else if (pibPerCapitaB > pibPerCapitaA) {
         pontosCartaB++;
-        printf("A cidade 2 tem uma densidade populacional menor.\n");
+        printf("A cidade 2 tem o PIB per capita maior.\n");
     } else {
-        printf("As duas cidades têm a mesma densidade populacional.\n");
+        printf("As duas cidades têm a o mesmo PIB per capita.\n");
     }
+
 
     // Resultado da comparação
 
