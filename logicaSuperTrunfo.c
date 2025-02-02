@@ -138,7 +138,7 @@ int main() {
     } else if (pontosCartaB > pontosCartaA) {
         printf("\nA cidade vencedora é: %s, com %d pontos.\n", cidadeB, pontosCartaB);
     } else {
-        printf("\nHouve um empate entre as cidades. A pontuação de cada cidade foi: %d.\n", pontosCartaA);
+        printf("\nHouve um empate entre as cidades. A pontuação de cada uma foi: %d.\n", pontosCartaA);
     }
 
     return 0;
