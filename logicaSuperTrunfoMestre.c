@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países (Nível Mestre)
-// Introdução à programação de Computadores (Prof. Sérgio Cardoso)
-// Desenvolvido por Geras
+/* Desafio Super Trunfo - Países (Nível Mestre)
+ * Introdução à programação de Computadores (Prof. Sérgio Cardoso)
+ * Desenvolvido por Geras
+*/
 
 // Métodos globais
 
