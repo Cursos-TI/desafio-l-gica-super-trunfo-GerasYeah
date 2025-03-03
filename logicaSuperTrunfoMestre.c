@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Desafio Super Trunfo - Países (Nível Mestre)
+/* Desafio Lógica Super Trunfo - Países
  * Introdução à programação de Computadores (Prof. Sérgio Cardoso)
  * Desenvolvido por Geras
 */
