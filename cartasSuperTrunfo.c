@@ -17,7 +17,7 @@ float areaA, areaB;
 
 float densidadePopulacionalA, densidadePopulacionalB;
 float pibPerCapitaA, pibPerCapitaB;
-float superpoderA, superpoderB;
+float superPoderA, superPoderB;
 
 
 float calcularPibPerCapita(float pib, int populacao) {
@@ -30,31 +30,39 @@ float calcularDensidadePopulacional(float populacao, int area) {
     return densidadePopulacional;
 }
 
+float calcularSuperPoder(unsigned long int populacao, int pontosTuristicos, float area, float pib, float pibPerCapita, float densidadePopulacional) {
+    float superPoder = populacao + pontosTuristicos + area + pib + pibPerCapita;
+    return superPoder;
+}
+
 void imprimirComparacao(char propriedade[], int resultado) {
     int cartaVencedora = resultado == 1 ? 1 : 2;
-    printf("%s: A carta %d venceu!\n", propriedade, cartaVencedora);
+    printf("%s: A carta %d venceu! (%d)\n", propriedade, cartaVencedora, resultado);
 }
 
 void compararCartas() {
     imprimirComparacao("População", populacaoA > populacaoB);
     imprimirComparacao("Área", areaA > areaA);
     imprimirComparacao("PIB", pibA > pibB);
+    imprimirComparacao("Pontos turísticos", pontosTuristicosA > pontosTuristicosB);
+    imprimirComparacao("Densidade populacional", densidadePopulacionalA < densidadePopulacionalB);
+    imprimirComparacao("PIB Per Capita", pibPerCapitaA > pibPerCapitaB);
+    imprimirComparacao("Super Poder", superPoderA > superPoderB);
 }
 
 int main() {
-    
     // Cadastro da carta 1
-    printf("Digite o código da carta: ");
-    scanf("%3s", codigoA);
-   
-    printf("Digite a sigla do Estado: ");
-    scanf("%2s", estadoA);
+    printf("Digite a letra do Estado (de A a H): ");
+    scanf("%1s", estadoA);
+
+    printf("Digite o código da carta 2 (de 01 a 04): ");
+    scanf("%2s", codigoA);
 
     printf("Digite o nome da cidade: ");
     scanf("%30s", cidadeA);
 
     printf("Digite o total de habitantes: ");
-    scanf("%d", &populacaoA);
+    scanf("%ld", &populacaoA);
 
     printf("Digite o PIB: ");
     scanf("%f", &pibA);
@@ -65,59 +73,61 @@ int main() {
     printf("Digite o total de pontos turísticos: ");
     scanf("%d", &pontosTuristicosA);
 
-    // Cálculo do PIB per capita e densidade populacional da carta 1
+    // Calcular PIB Per Capita, densidade populacional e super poder da carta 1
     pibPerCapitaA = calcularPibPerCapita(pibA, populacaoA);
     densidadePopulacionalA = calcularDensidadePopulacional(populacaoA, areaA);
+    superPoderA = calcularSuperPoder(populacaoA, pontosTuristicosA, areaA, pibA, pibPerCapitaA, densidadePopulacionalA);
 
-    // Exibindo as propriedades da carta 1
+    // Exibir as propriedades da carta 1
     printf("\nInformações da carta 1:\n");
-    printf("Código: %s\n", codigoA);
     printf("Estado: %s\n", estadoA);
+    printf("Código: %s%s\n", estadoA, codigoA);
     printf("Cidade: %s\n", cidadeA);
-    printf("População: %d\n", populacaoA);
-    printf("Área: %f\n", areaA);
-    printf("PIB: %f\n", pibA);
+    printf("População: %ld\n", populacaoA);
+    printf("Área: %f km²\n", areaA);
+    printf("PIB: %f bilhões de reais\n", pibA);
     printf("Pontos turísticos: %d\n", pontosTuristicosA);
-    printf("PIB per capita: %f\n", pibPerCapitaA);
-    printf("Densidade populacional: %d\n\n", densidadePopulacionalA);
+    printf("PIB per Capita: %f reais\n", pibPerCapitaA);
+    printf("Densidade populacional: %f habitantes/km²\n\n", densidadePopulacionalA);
 
     // Cadastro da carta 2
-    printf("Digite o código da carta 2: ");
-    scanf("%3s", codigoB);
-   
-    printf("Digite a sigla do Estado: ");
-    scanf("%2s", estadoB);
+    printf("Digite a letra do Estado (de A a H): ");
+    scanf("%1s", estadoB);
+
+    printf("Digite o código da carta 2 (de 01 a 04): ");
+    scanf("%2s", codigoB);
 
     printf("Digite o nome da cidade: ");
     scanf("%30s", cidadeB);
 
     printf("Digite a população: ");
-    scanf("%d", &populacaoB);
+    scanf("%ld", &populacaoB);
 
     printf("Digite o PIB: ");
     scanf("%f", &pibB);
 
-    printf("Digite a area: ");
+    printf("Digite a área territorial: ");
     scanf("%f", &areaB);
 
     printf("Digite o total de pontos turísticos: ");
     scanf("%d", &pontosTuristicosB);
 
-    // Cálculo do PIB per capita e densidade populacional da carta 2
+    // Calcular PIB Per Capita, densidade populacional e super poder da carta 2
     pibPerCapitaB = calcularPibPerCapita(pibB, populacaoB);
     densidadePopulacionalB = calcularDensidadePopulacional(populacaoB, areaB);
+    superPoderB = calcularSuperPoder(populacaoB, pontosTuristicosB, areaB, pibB, pibPerCapitaB, densidadePopulacionalB);
 
-    // Exibindo as propriedades da carta 2
+    // Exibir as propriedades da carta 2
     printf("\nInformações da carta 2:\n");
-    printf("Código: %s\n", codigoB);
     printf("Estado: %s\n", estadoB);
+    printf("Código: %s%s\n", estadoB, codigoB);
     printf("Cidade: %s\n", cidadeB);
-    printf("População: %d\n", populacaoB);
-    printf("Área: %f\n", areaB);
-    printf("PIB: %f\n", pibB);
+    printf("População: %ld\n", populacaoB);
+    printf("Área: %f\n km²", areaB);
+    printf("PIB: %f bilhões de reais\n", pibB);
     printf("Pontos turísticos: %d\n", pontosTuristicosB);
-    printf("PIB per capita: %d\n", pibPerCapitaB);
-    printf("Densidade populacional: %d\n\n", densidadePopulacionalB);
+    printf("PIB per Capita: %f\n reais", pibPerCapitaB);
+    printf("Densidade populacional: %f habitantes/km²\n\n", densidadePopulacionalB);
 
     compararCartas();
 }
