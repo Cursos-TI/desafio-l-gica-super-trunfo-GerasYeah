@@ -19,7 +19,7 @@ float densidadePopulacionalA, densidadePopulacionalB;
 float pibPerCapitaA, pibPerCapitaB;
 float superPoderA, superPoderB;
 
-
+// Métodos/funções
 float calcularPibPerCapita(float pib, int populacao) {
     float pibPerCapita = pib / populacao;
     return pibPerCapita;
@@ -31,16 +31,24 @@ float calcularDensidadePopulacional(float populacao, int area) {
 }
 
 float calcularSuperPoder(unsigned long int populacao, int pontosTuristicos, float area, float pib, float pibPerCapita, float densidadePopulacional) {
-    float superPoder = populacao + pontosTuristicos + area + pib + pibPerCapita;
+    // Inverter o valor da densidade populacional
+    float densidadePopulacionalInvertida;
+    if (densidadePopulacional > 0 ) {
+        densidadePopulacionalInvertida = 1.0 / densidadePopulacional;
+    }
+    // Somar todos os valores e retornar
+    float superPoder = populacao + pontosTuristicos + area + pib + pibPerCapita + densidadePopulacionalInvertida;
     return superPoder;
 }
 
 void imprimirComparacao(char propriedade[], int resultado) {
+    // Exibir a comparação de um atributo específico
     int cartaVencedora = resultado == 1 ? 1 : 2;
     printf("%s: A carta %d venceu! (%d)\n", propriedade, cartaVencedora, resultado);
 }
 
 void compararCartas() {
+    // Comparar e exibir atributos um por um
     imprimirComparacao("População", populacaoA > populacaoB);
     imprimirComparacao("Área", areaA > areaA);
     imprimirComparacao("PIB", pibA > pibB);
@@ -51,7 +59,7 @@ void compararCartas() {
 }
 
 int main() {
-    // Cadastro da carta 1
+    // Cadastrar carta 1
     printf("Digite a letra do Estado (de A a H): ");
     scanf("%1s", estadoA);
 
@@ -73,7 +81,7 @@ int main() {
     printf("Digite o total de pontos turísticos: ");
     scanf("%d", &pontosTuristicosA);
 
-    // Calcular PIB Per Capita, densidade populacional e super poder da carta 1
+    // Calcular PIB per Capita, densidade populacional e super poder da carta 1
     pibPerCapitaA = calcularPibPerCapita(pibA, populacaoA);
     densidadePopulacionalA = calcularDensidadePopulacional(populacaoA, areaA);
     superPoderA = calcularSuperPoder(populacaoA, pontosTuristicosA, areaA, pibA, pibPerCapitaA, densidadePopulacionalA);
@@ -90,7 +98,7 @@ int main() {
     printf("PIB per Capita: %f reais\n", pibPerCapitaA);
     printf("Densidade populacional: %f habitantes/km²\n\n", densidadePopulacionalA);
 
-    // Cadastro da carta 2
+    // Cadastrar carta 2
     printf("Digite a letra do Estado (de A a H): ");
     scanf("%1s", estadoB);
 
@@ -112,7 +120,7 @@ int main() {
     printf("Digite o total de pontos turísticos: ");
     scanf("%d", &pontosTuristicosB);
 
-    // Calcular PIB Per Capita, densidade populacional e super poder da carta 2
+    // Calcular PIB per Capita, densidade populacional e super poder da carta 2
     pibPerCapitaB = calcularPibPerCapita(pibB, populacaoB);
     densidadePopulacionalB = calcularDensidadePopulacional(populacaoB, areaB);
     superPoderB = calcularSuperPoder(populacaoB, pontosTuristicosB, areaB, pibB, pibPerCapitaB, densidadePopulacionalB);
@@ -129,5 +137,6 @@ int main() {
     printf("PIB per Capita: %f\n reais", pibPerCapitaB);
     printf("Densidade populacional: %f habitantes/km²\n\n", densidadePopulacionalB);
 
+    // Exibir a comparação após o fim do registro das cartas
     compararCartas();
 }
